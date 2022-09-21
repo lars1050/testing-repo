@@ -9,20 +9,20 @@
  * @author amylarson
  */
 public class UnitTestFace extends UnitTest {
-    
+
     public static void main(String[] args) {
         testConstructors();
         testCompare();
         testBestMatch();
         testWorstMatch();
     }
-    
-    
+
+
     public static void testConstructors() {
         System.out.println("***** TESTING Face constructor with String");
-        
+
         Face fixed = new Face("100,200,1,2,3,4,5,6");
-        
+
         test(100,fixed.width(),"face width");
         test(200,fixed.height(),"face height");
         test(1,fixed.eyeDelta(),"eye delta");
@@ -31,28 +31,28 @@ public class UnitTestFace extends UnitTest {
         test(4,fixed.noseWidth(),"nose width");
         test(5,fixed.mouthDelta(),"mouth delta");
     }
-    
+
     public static void testCompare() {
         System.out.println("***** TESTING Face compare method");
-        
+
         Face f1 = new Face("100,200,1,2,3,4,5,6");
         Face f2 = new Face("100,200,1,2,3,4,5,6");
         Face f3 = new Face("200,400,2,4,6,8,10,12");
         Face f4 = new Face("100,100,1,2,3,4,5,6");
-        
+
         testDoubles(0.0,f3.compare(f3),0.0,"identical objects");
         testDoubles(0.0,f1.compare(f2),0.0,"identical values");
-        testDoubles(0.0,f1.compare(f3),0.0,"proportional faces");
+        testDoubles(0.0,f2.compare(f3),0.0,"proportional faces");
 
         // TO-DO: Write 1 unit test that compares faces with different width and height,
         // but has everything else the same.
-        
+
         //testDouble(...,"different head shapes");
     }
 
     public static void testBestMatch() {
         System.out.println("***** TESTING Best Match");
-         
+
         // Convert the strings from the file into Face objects
         Face[] faces = new Face[5];
         faces[0] = new Face("100,100,1,1,1,1,1");
@@ -82,7 +82,7 @@ public class UnitTestFace extends UnitTest {
 
     public static void testWorstMatch() {
         System.out.println("***** TESTING Worst Match");
-         
+
         // Convert the strings from the file into Face objects
         Face[] faces = new Face[5];
         faces[0] = new Face("100,100,1,1,1,1,1");
